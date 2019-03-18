@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+ -->
+<mapper namespace="com.quickbusiness.demo.dao.DemoDao">
+    <select id="getUserList" resultType="com.quickbusiness.demo.entity.UserInfo">
+        select * from user
+    </select>
+
+    <select id="getUser" parameterType="int" resultType="com.quickbusiness.demo.entity.UserInfo">
+        select * from user where id=#{id}
+    </select>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <insert id="addUser" parameterType="com.quickbusiness.demo.entity.UserInfo" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO user( username, password) VALUES ( #{username}, #{password});
+    </insert>
+
+    <update id="updateUser" parameterType="com.quickbusiness.demo.entity.UserInfo">
+        UPDATE user SET username=#{username}, password=#{password} WHERE id=#{id};
+
+    </update>
+
+</mapper>

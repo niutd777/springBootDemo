@@ -1,0 +1,25 @@
+#http访问端口
+server:
+  port: 8080
+  servlet:
+    context-path: /springBootDemo
+
+#默认开发环境
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  type-aliases-package: com.niutd.*.entity
+  mapper-locations: classpath:mapper/*/*.xml
+  configuration:
+    #开启驼峰命名转换
+    mapUnderscoreToCamelCase: true
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check
